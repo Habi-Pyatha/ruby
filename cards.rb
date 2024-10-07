@@ -90,13 +90,19 @@ def play
   #   end
   # end
   card_count=0
+  print("\t")
+  1.upto(players) do |n|
+    print ("\t Player:#{n}")
+
+  end
+  puts
   cards.times do
     card_count+=1
     print "Card NO:#{card_count}"
     player_no=0
     players.times do
       player_no+=1
-      print "\t(Player:#{player_no}):#{deck.deal}"
+      print "\t#{deck.deal}"
     end
     print "\n"
   end
