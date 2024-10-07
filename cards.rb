@@ -14,17 +14,21 @@ class Deck
   RANKS=['2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace']
   SUITS=['Clubs','Diamonds','Hearts','Spades']
   def initialize(deck_no)
+    # if deck_no>3
+    #   puts "Deck limit is set to 3 so Please re-enter your values"
+      
+    #   play
+    # end
     @cards=[]
     # puts "from ini #{deck_no}"
-    deck_no.times do
-
-    
-    SUITS.each do |suit|
-      RANKS.each do |rank|
-        @cards << Card.new(rank,suit)
+    deck_no.times do    
+      SUITS.each do |suit|
+        RANKS.each do |rank|
+          @cards << Card.new(rank,suit)
+        end
       end
     end
-    end
+    puts ("check:#{@cards[0]}")
   end
   #Shuffle the deck
   def shuffle
@@ -33,11 +37,14 @@ class Deck
 
   #Deal one card (remove and return the top card)
   def deal
-    if @cards.length>0
-        @cards.pop
-    else
-      puts "Card is finished"
-    end
+    # if @cards.length>0
+    #     @cards.pop
+    # else
+    #   puts "Card is finished"
+    # end
+    @cards.pop
+    # card=@cards.pop
+    # "#{card.rank} of #{card.suit}"
   end
 
   #Number of cards remaining in the deck
@@ -74,18 +81,29 @@ def play
   deck=Deck.new(deck_count)
   deck.shuffle
   player_count=0
-  players.times do 
-    player_count+=1
-    puts "Player:#{player_count}"
-    dealt_count=0
-    cards.times do
-        puts "Dealt(#{dealt_count+=1}): #{deck.deal}"
+  # players.times do 
+  #   player_count+=1
+  #   puts "Player:#{player_count}"
+  #   dealt_count=0
+  #   cards.times do
+  #       puts "Dealt(#{dealt_count+=1}): #{deck.deal}"
+  #   end
+  # end
+  card_count=0
+  cards.times do
+    card_count+=1
+    print "Card NO:#{card_count}"
+    player_no=0
+    players.times do
+      player_no+=1
+      print "\t(Player:#{player_no}):#{deck.deal}"
     end
+    print "\n"
   end
   puts "Remaining Cards #{deck.remaining_cards}"
 end
 
-play
+ play
 # if players*cards<=deck.remaining_cards
 #   deck.shuffle
 #   player_count=0
